@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { SITE } from "@/lib/site";
+import { CompanyContact } from "./CompanyContact";
 
 export function Footer() {
   return (
@@ -31,6 +32,7 @@ export function Footer() {
         <div>
           <h3 className="text-lg text-gold">Contact</h3>
           <a href={`mailto:${SITE.email}`} className="mt-3 flex items-center gap-2 text-sm text-primary-foreground/80 hover:text-gold"><Mail className="size-4 text-gold" />{SITE.email}</a>
+          <CompanyContact />
           <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
             {SITE.contacts.map((c) => <li key={c.division}>{c.division}: {c.person}</li>)}
           </ul>
@@ -39,7 +41,7 @@ export function Footer() {
       <div className="border-t border-primary-foreground/10">
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-2 px-4 py-5 text-xs text-primary-foreground/60 sm:flex-row sm:px-6">
           <span>© {new Date().getFullYear()} MAAK Enterprises. All rights reserved.</span>
-          <Link to="/privacy" className="hover:text-gold">Privacy Policy</Link>
+          <div className="flex gap-4"><Link to="/privacy" className="hover:text-gold">Privacy Policy</Link><Link to="/auth" className="hover:text-gold">Admin sign in</Link></div>
         </div>
       </div>
     </footer>

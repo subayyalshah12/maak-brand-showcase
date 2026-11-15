@@ -33,12 +33,17 @@ export function InquiryForm({ type, reference, title = "Send an inquiry" }: { ty
       setErrors(errs as Errs); return;
     }
     setErrors({}); setServerError(""); setState("sending");
+    try {
     const { error } = await supabase.from("inquiries").insert({
       name: parsed.data.name, phone: parsed.data.phone || null, email: parsed.data.email || null,
       message: parsed.data.message, inquiry_type: type, reference: reference ?? null,
     });
     if (error) { setServerError("Sorry, your message could not be sent. Please try again or email us."); setState("idle"); return; }
     form.reset(); setState("done");
+    } catch {
+      setServerError("Sorry, your message could not be sent. Please try again or email us.");
+      setState("idle");
+    }
   }
 
   if (state === "done") {
@@ -53,7 +58,7 @@ export function InquiryForm({ type, reference, title = "Send an inquiry" }: { ty
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-4 rounded-lg border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:p-8">
+    <form onSubmit={onSubmit} noValidate aria-busy={state === "sending"} className="space-y-4 rounded-lg border border-border bg-card p-6 shadow-[var(--shadow-card)] sm:p-8">
       <h3 className="text-2xl font-semibold text-primary">{title}</h3>
       {reference && <p className="text-sm text-muted-foreground">Regarding: <strong>{reference}</strong></p>}
       <Field id="name" label="Full name" error={errors.name}><Input id="name" name="name" maxLength={100} autoComplete="name" /></Field>

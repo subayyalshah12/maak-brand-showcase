@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ConstructionRouteImport } from './routes/construction'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EducationRouteImport } from './routes/education'
@@ -18,6 +20,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as RealEstateRouteImport } from './routes/real-estate'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as ProjectsIdRouteImport } from './routes/projects.$id'
 import { Route as RealEstateIdRouteImport } from './routes/real-estate.$id'
 
@@ -26,9 +29,18 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConstructionRoute = ConstructionRouteImport.update({
@@ -66,6 +78,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const ProjectsIdRoute = ProjectsIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -80,6 +97,7 @@ const RealEstateIdRoute = RealEstateIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
@@ -87,12 +105,14 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRouteWithChildren
   '/real-estate': typeof RealEstateRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/projects/$id': typeof ProjectsIdRoute
   '/real-estate/$id': typeof RealEstateIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
@@ -100,13 +120,16 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRouteWithChildren
   '/real-estate': typeof RealEstateRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/projects/$id': typeof ProjectsIdRoute
   '/real-estate/$id': typeof RealEstateIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/construction': typeof ConstructionRoute
   '/contact': typeof ContactRoute
   '/education': typeof EducationRoute
@@ -114,6 +137,7 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRouteWithChildren
   '/real-estate': typeof RealEstateRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/projects/$id': typeof ProjectsIdRoute
   '/real-estate/$id': typeof RealEstateIdRoute
 }
@@ -122,6 +146,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/construction'
     | '/contact'
     | '/education'
@@ -129,12 +154,14 @@ export interface FileRouteTypes {
     | '/projects'
     | '/real-estate'
     | '/sitemap.xml'
+    | '/admin'
     | '/projects/$id'
     | '/real-estate/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/construction'
     | '/contact'
     | '/education'
@@ -142,12 +169,15 @@ export interface FileRouteTypes {
     | '/projects'
     | '/real-estate'
     | '/sitemap.xml'
+    | '/admin'
     | '/projects/$id'
     | '/real-estate/$id'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/construction'
     | '/contact'
     | '/education'
@@ -155,13 +185,16 @@ export interface FileRouteTypes {
     | '/projects'
     | '/real-estate'
     | '/sitemap.xml'
+    | '/_authenticated/admin'
     | '/projects/$id'
     | '/real-estate/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   ConstructionRoute: typeof ConstructionRoute
   ContactRoute: typeof ContactRoute
   EducationRoute: typeof EducationRoute
@@ -180,11 +213,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/construction': {
@@ -236,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/projects/$id': {
       id: '/projects/$id'
       path: '/$id'
@@ -252,6 +306,17 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 interface ProjectsRouteChildren {
   ProjectsIdRoute: typeof ProjectsIdRoute
@@ -279,7 +344,9 @@ const RealEstateRouteWithChildren = RealEstateRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   ConstructionRoute: ConstructionRoute,
   ContactRoute: ContactRoute,
   EducationRoute: EducationRoute,

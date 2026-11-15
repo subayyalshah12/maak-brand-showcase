@@ -3,6 +3,7 @@ import { ArrowLeft, MapPin } from "lucide-react";
 import { projects } from "@/lib/sample-data";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { seo } from "@/lib/seo";
+import { ListingImage } from "@/components/site/ListingImage";
 
 export const Route = createFileRoute("/projects/$id")({
   loader: ({ params }) => {
@@ -11,7 +12,7 @@ export const Route = createFileRoute("/projects/$id")({
     return p;
   },
   head: ({ loaderData, params }) => loaderData
-    ? seo(loaderData.title.replace("[Sample] ", ""), `${loaderData.category} construction project in ${loaderData.location} — ${loaderData.status}.`, `/projects/${params.id}`, "article")
+    ? seo(loaderData.title, `Sample project for layout demonstration, not genuine company work. ${loaderData.category} in ${loaderData.location}.`, `/projects/${params.id}`, "article")
     : { meta: [{ title: "Project unavailable | MAAK Enterprises" }, { name: "robots", content: "noindex" }] },
   notFoundComponent: () => (
     <div className="mx-auto max-w-xl px-4 py-24 text-center"><h1 className="text-4xl text-primary">Project not found</h1><Link to="/projects" className="mt-4 inline-block text-primary underline">Back to projects</Link></div>
@@ -24,7 +25,7 @@ function ProjectDetail() {
   return (
     <article className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <Link to="/projects" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"><ArrowLeft className="size-4" />All projects</Link>
-      <div className="mt-6 overflow-hidden rounded-lg"><img src={p.image} alt={p.title} width={1280} height={896} className="aspect-[16/8] w-full object-cover" /></div>
+      <div className="mt-6 overflow-hidden rounded-lg"><ListingImage kind="project" referenceId={p.id} src={p.image} alt={p.title} width={1280} height={896} className="aspect-[16/8] w-full object-cover" /></div>
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.5fr_1fr]">
         <div>
           <p className="eyebrow">{p.status} · {p.category}</p>

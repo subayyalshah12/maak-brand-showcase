@@ -5,6 +5,7 @@ import { formatPKR, whatsappLink } from "@/lib/site";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { WhatsAppButton } from "@/components/site/Cards";
 import { seo } from "@/lib/seo";
+import { ListingImage } from "@/components/site/ListingImage";
 
 export const Route = createFileRoute("/real-estate/$id")({
   loader: ({ params }) => {
@@ -13,7 +14,7 @@ export const Route = createFileRoute("/real-estate/$id")({
     return p;
   },
   head: ({ loaderData, params }) => loaderData
-    ? seo(loaderData.title.replace("[Sample] ", ""), `${loaderData.type} for ${loaderData.purpose} in ${loaderData.location}. ${loaderData.size}.`, `/real-estate/${params.id}`, "article")
+    ? seo(loaderData.title, `Sample listing for layout demonstration, not a genuine company property. ${loaderData.type} in ${loaderData.location}.`, `/real-estate/${params.id}`, "article")
     : { meta: [{ title: "Property unavailable | MAAK Enterprises" }, { name: "robots", content: "noindex" }] },
   notFoundComponent: () => (
     <div className="mx-auto max-w-xl px-4 py-24 text-center"><h1 className="text-4xl text-primary">Property not found</h1><Link to="/real-estate" className="mt-4 inline-block text-primary underline">Back to properties</Link></div>
@@ -33,7 +34,7 @@ function PropertyDetail() {
   return (
     <article className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
       <Link to="/real-estate" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"><ArrowLeft className="size-4" />All properties</Link>
-      <div className="mt-6 overflow-hidden rounded-lg"><img src={p.image} alt={p.title} width={1280} height={896} className="aspect-[16/8] w-full object-cover" /></div>
+      <div className="mt-6 overflow-hidden rounded-lg"><ListingImage kind="property" referenceId={p.id} src={p.image} alt={p.title} width={1280} height={896} className="aspect-[16/8] w-full object-cover" /></div>
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.5fr_1fr]">
         <div>
           <span className="rounded bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground">For {p.purpose}</span>

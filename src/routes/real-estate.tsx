@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { properties } from "@/lib/sample-data";
 import { seo } from "@/lib/seo";
+import { filterProperties } from "@/lib/property-search";
 
 export const Route = createFileRoute("/real-estate")({
   head: () => seo("Real Estate — Properties for Sale & Rent", "Browse houses, apartments, plots and commercial properties for sale and rent in Islamabad and Rawalpindi with MAAK Enterprises.", "/real-estate"),
@@ -27,12 +28,7 @@ function RealEstate() {
   const [purpose, setPurpose] = useState("all");
   const [type, setType] = useState("all");
   const [beds, setBeds] = useState("0");
-  const list = useMemo(() => properties.filter((p) =>
-    (purpose === "all" || p.purpose === purpose) &&
-    (type === "all" || p.type === type) &&
-    p.bedrooms >= Number(beds) &&
-    (q === "" || `${p.title} ${p.location}`.toLowerCase().includes(q.toLowerCase()))
-  ), [q, purpose, type, beds]);
+  const list = useMemo(() => filterProperties(properties, { q, purpose, type, beds }), [q, purpose, type, beds]);
   const reset = () => { setQ(""); setPurpose("all"); setType("all"); setBeds("0"); };
 
   return (

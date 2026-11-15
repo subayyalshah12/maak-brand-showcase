@@ -32,3 +32,7 @@ use the editor.
 - Brand logo is a single `lovable-assets` pointer rendered only via `src/components/site/Logo.tsx` (h-* with w-auto) so proportions stay intact everywhere.
 - Inquiry forms insert directly from the browser into `public.inquiries` under an anon insert-only RLS policy; no public read access.
 - Listings/projects come from `src/lib/sample-data.ts` until the admin dashboard phase moves them to the database.
+- Administrator access uses an authenticated route gate plus separately protected user_roles RLS; client affordances never authorize database access.
+- Keep listing content as explicitly marked sample data; only image overrides and company contact settings are persisted until listing CRUD is requested.
+- Listing photos use private storage with SELECT only for attached public images and admin-only writes; temporary signed URLs refresh before expiry.
+- Company contact fields use the shared company-settings query so admin edits appear throughout public pages without invented defaults.

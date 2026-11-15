@@ -8,6 +8,20 @@
       "when": 1794722508121,
       "tag": "0000_migration",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794731315349,
+      "tag": "0001_secure_admin_profiles_settings_media",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794731342299,
+      "tag": "0002_allow_published_listing_image_access",
+      "breakpoints": true
     }
   ]
 }

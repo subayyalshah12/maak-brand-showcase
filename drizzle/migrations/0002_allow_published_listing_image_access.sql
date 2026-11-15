@@ -1,0 +1,1 @@
+CREATE POLICY "Visitors view attached listing images" ON storage.objects FOR SELECT TO anon, authenticated USING (bucket_id = 'listing-images' AND EXISTS (SELECT 1 FROM public.listing_images WHERE storage_path = name));
