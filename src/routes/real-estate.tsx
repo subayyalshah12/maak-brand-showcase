@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { properties } from "@/lib/sample-data";
 import { seo } from "@/lib/seo";
 import { filterProperties } from "@/lib/property-search";
-
+import { SITE, contactWhatsappLink } from "@/lib/site";
 export const Route = createFileRoute("/real-estate")({
   head: () => seo("Real Estate — Properties for Sale & Rent", "Browse houses, apartments, plots and commercial properties for sale and rent in Islamabad and Rawalpindi with MAAK Enterprises.", "/real-estate"),
   component: RealEstateLayout,
