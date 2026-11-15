@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, User } from "lucide-react";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { SectionHeading } from "@/components/site/PageHero";
-import { SITE } from "@/lib/site";
+import { SITE, contactWhatsappLink } from "@/lib/site";
+import { Button } from "@/components/ui/button";
 import { seo } from "@/lib/seo";
 import { CompanyContact } from "@/components/site/CompanyContact";
 
