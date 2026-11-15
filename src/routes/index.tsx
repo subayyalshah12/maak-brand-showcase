@@ -172,7 +172,9 @@ function Home() {
             <Button asChild variant="outline"><Link to="/real-estate">All properties</Link></Button>
           </div>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {properties.filter((p) => p.featured).map((p) => <PropertyCard key={p.id} p={p} />)}
+            {featuredProperties.map((p) => (
+  <PropertyCard key={p.id} p={p} />
+))}
           </div>
         </div>
       </section>
