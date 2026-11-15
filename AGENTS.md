@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Brand logo is a single `lovable-assets` pointer rendered only via `src/components/site/Logo.tsx` (h-* with w-auto) so proportions stay intact everywhere.
+- Inquiry forms insert directly from the browser into `public.inquiries` under an anon insert-only RLS policy; no public read access.
+- Listings/projects come from `src/lib/sample-data.ts` until the admin dashboard phase moves them to the database.
