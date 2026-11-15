@@ -1,12 +1,15 @@
 import { createFileRoute, Outlet, useMatchRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import { Search } from "lucide-react";
 import hero from "@/assets/realestate.jpg";
 import { PageHero } from "@/components/site/PageHero";
 import { PropertyCard } from "@/components/site/Cards";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { properties } from "@/lib/sample-data";
+import { properties as sampleProperties } from "@/lib/sample-data";
+import type { Property } from "@/lib/sample-data";
 import { seo } from "@/lib/seo";
 import { filterProperties } from "@/lib/property-search";
 import { SITE, contactWhatsappLink } from "@/lib/site";
@@ -24,11 +27,48 @@ function RealEstateLayout() {
 const selectCls = "h-10 rounded-md border border-input bg-background px-3 text-sm";
 
 function RealEstate() {
-  const [q, setQ] = useState("");
+    const [q, setQ] = useState("");
   const [purpose, setPurpose] = useState("all");
   const [type, setType] = useState("all");
   const [beds, setBeds] = useState("0");
-  const list = useMemo(() => filterProperties(properties, { q, purpose, type, beds }), [q, purpose, type, beds]);
+
+  const publishedProperties = useQuery({
+    queryKey: ["published-properties"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("properties")
+        .select("*")
+        .eq("status", "published")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+
+      return data.map((item): Property => ({
+        id: item.id,
+        title: item.title,
+        type: item.type as Property["type"],
+        purpose: item.purpose as Property["purpose"],
+        price: Number(item.price),
+        location: item.location,
+        size: item.size,
+        bedrooms: item.bedrooms,
+        bathrooms: item.bathrooms,
+        description: item.description,
+        image: hero,
+        featured: item.featured,
+      }));
+    },
+  });
+
+  const displayProperties =
+    publishedProperties.data && publishedProperties.data.length > 0
+      ? publishedProperties.data
+      : sampleProperties;
+
+  const list = useMemo(
+    () => filterProperties(displayProperties, { q, purpose, type, beds }),
+    [displayProperties, q, purpose, type, beds]
+  );
   const reset = () => { setQ(""); setPurpose("all"); setType("all"); setBeds("0"); };
 
   return (
