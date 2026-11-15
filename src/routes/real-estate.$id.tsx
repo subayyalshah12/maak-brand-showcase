@@ -1,6 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Bath, BedDouble, Home, MapPin, Ruler } from "lucide-react";
-import { properties } from "@/lib/sample-data";
+import { properties as sampleProperties } from "@/lib/sample-data";
+import type { Property } from "@/lib/sample-data";
+import { supabase } from "@/integrations/supabase/client";
+import hero from "@/assets/realestate.jpg";
 import { formatPKR, whatsappLink } from "@/lib/site";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { WhatsAppButton } from "@/components/site/Cards";
