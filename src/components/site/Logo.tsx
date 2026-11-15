@@ -1,12 +1,12 @@
+
 import { Link } from "@tanstack/react-router";
-import logo from "@/assets/maak-logo.png.asset.json";
 import { cn } from "@/lib/utils";
 
-// Official MAAK Enterprises logo — always rendered with its original proportions (348×321).
+// Official MAAK Enterprises logo served from public assets.
 export function Logo({ className, linked = true }: { className?: string; linked?: boolean }) {
   const img = (
     <img
-      src={logo.url}
+      src="/maak-logo.png"
       alt="MAAK Enterprises Company"
       width={348}
       height={321}
