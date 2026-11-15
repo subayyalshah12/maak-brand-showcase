@@ -27,6 +27,39 @@ const divisions = [
 ] as const;
 
 function Home() {
+    const featuredQuery = useQuery({
+    queryKey: ["homepage-featured-properties"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("properties")
+        .select("*")
+        .eq("status", "published")
+        .eq("featured", true)
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+
+      return data.map((item): Property => ({
+        id: item.id,
+        title: item.title,
+        type: item.type as Property["type"],
+        purpose: item.purpose as Property["purpose"],
+        price: Number(item.price),
+        location: item.location,
+        size: item.size,
+        bedrooms: item.bedrooms,
+        bathrooms: item.bathrooms,
+        description: item.description,
+        image: hero,
+        featured: item.featured,
+      }));
+    },
+  });
+
+  const featuredProperties =
+    featuredQuery.data && featuredQuery.data.length > 0
+      ? featuredQuery.data
+      : properties.filter((p) => p.featured);
   return (
     <>
       <section className="relative isolate overflow-hidden bg-navy-deep">
