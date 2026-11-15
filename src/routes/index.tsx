@@ -10,6 +10,7 @@ import { PropertyCard, ProjectCard } from "@/components/site/Cards";
 import { properties, projects } from "@/lib/sample-data";
 import { Logo } from "@/components/site/Logo";
 import { seo } from "@/lib/seo";
+import { SITE, contactWhatsappLink } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => seo("Construction, Real Estate & Education Consultancy", "MAAK Enterprises brings construction, real estate and medical college admissions consultancy together under one trusted name in Rawalpindi and Islamabad.", "/"),
