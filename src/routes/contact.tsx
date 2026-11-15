@@ -27,9 +27,63 @@ function Contact() {
             <div key={o.city} className="rounded-lg border border-border bg-card p-5"><MapPin className="size-5 text-gold" /><p className="mt-2 font-semibold">{o.city}</p><p className="text-sm text-muted-foreground">{o.focus}</p></div>
           ))}
         </div>
-        <ul className="mt-6 space-y-2">
-          {SITE.contacts.map((c) => <li key={c.division} className="flex items-center gap-2 text-sm"><User className="size-4 text-gold" /><strong>{c.division}:</strong> {c.person}</li>)}
-        </ul>
+                <div className="mt-10">
+          <SectionHeading
+            eyebrow="Our team"
+            title="Contact the right department"
+            intro="Reach the relevant team directly for your requirements."
+          />
+
+          <div className="mt-6 grid gap-5">
+            {["Construction", "Real Estate", "Educational Consultancy"].map(
+              (division) => (
+                <div
+                  key={division}
+                  className="rounded-lg border border-border bg-card p-6 shadow-[var(--shadow-card)]"
+                >
+                  <h3 className="text-xl font-semibold text-primary">
+                    {division}
+                  </h3>
+
+                  <div className="mt-4 grid gap-4">
+                    {SITE.contacts
+                      .filter((person) => person.division === division)
+                      .map((person) => (
+                        <div
+                          key={`${division}-${person.person}`}
+                          className="border-t border-border pt-4"
+                        >
+                          <p className="font-semibold">{person.person}</p>
+                          <p className="mt-1 text-sm text-muted-foreground">
+                            {person.phone}
+                          </p>
+
+                          <div className="mt-3 flex gap-3">
+                            <Button asChild size="sm">
+                              <a href={`tel:${person.phone}`}>Call</a>
+                            </Button>
+
+                            <Button asChild size="sm" variant="outline">
+                              <a
+                                href={contactWhatsappLink(
+                                  person.phone,
+                                  `Hello, I would like to contact the ${division} department at MAAK Enterprises.`
+                                )}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                WhatsApp
+                              </a>
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </div>
+              )
+            )}
+          </div>
+        </div>
       </div>
       <InquiryForm type="general" />
     </section>
