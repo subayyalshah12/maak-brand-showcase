@@ -6,7 +6,7 @@ import { ProjectCard } from "@/components/site/Cards";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/sample-data";
 import { seo } from "@/lib/seo";
-
+import { SITE, contactWhatsappLink } from "@/lib/site";
 export const Route = createFileRoute("/construction")({
   head: () => seo("Construction Services", "Residential and commercial construction services by MAAK Enterprises, operating from Rawalpindi, Pakistan.", "/construction"),
   component: Construction,
