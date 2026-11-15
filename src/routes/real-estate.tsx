@@ -61,6 +61,42 @@ function RealEstate() {
           </div>
         )}
       </section>
+            <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-2xl rounded-lg border border-border bg-card p-8 text-center shadow-[var(--shadow-card)]">
+          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            Real Estate Contact
+          </p>
+
+          <h2 className="mt-3 text-3xl font-semibold text-primary">
+            Uzair Ali Kazmi
+          </h2>
+
+          <p className="mt-2 text-muted-foreground">
+            Chief Executive Officer (CEO)
+          </p>
+
+          <p className="mt-2 text-muted-foreground">03315342214</p>
+
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Button asChild>
+              <a href="tel:03315342214">Call Now</a>
+            </Button>
+
+            <Button asChild variant="outline">
+              <a
+                href={contactWhatsappLink(
+                  "03315342214",
+                  "Hello, I would like to discuss a real estate requirement with MAAK Enterprises."
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
