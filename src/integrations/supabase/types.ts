@@ -14,6 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
+      properties: {
+        Row: {
+          id: string
+          title: string
+          type: string
+          purpose: string
+          price: number
+          location: string
+          size: string
+          bedrooms: number
+          bathrooms: number
+          description: string
+          featured: boolean
+          status: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          title: string
+          type: string
+          purpose: string
+          price: number
+          location: string
+          size: string
+          bedrooms?: number
+          bathrooms?: number
+          description: string
+          featured?: boolean
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          title?: string
+          type?: string
+          purpose?: string
+          price?: number
+          location?: string
+          size?: string
+          bedrooms?: number
+          bathrooms?: number
+          description?: string
+          featured?: boolean
+          status?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       company_settings: {
         Row: {
           id: string
