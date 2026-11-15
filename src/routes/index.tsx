@@ -65,7 +65,70 @@ function Home() {
           ))}
         </div>
       </section>
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+        <SectionHeading
+          eyebrow="Our leadership"
+          title="Meet the leadership team"
+          intro="Connect directly with the people leading MAAK Enterprises."
+        />
 
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {SITE.leadership
+            .filter((person) =>
+              person.role.includes("Chief Executive") ||
+              person.role.includes("Chief Operating")
+            )
+            .map((person) => (
+              <div
+                key={person.role}
+                className="rounded-lg border border-border bg-card p-8 shadow-[var(--shadow-card)]"
+              >
+                <div className="flex size-16 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
+                  {person.name
+                    .split(" ")
+                    .map((part) => part[0])
+                    .slice(0, 2)
+                    .join("")}
+                </div>
+
+                <p className="mt-5 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                  {person.role}
+                </p>
+
+                <h3 className="mt-2 text-2xl font-semibold text-primary">
+                  {person.name}
+                </h3>
+
+                <p className="mt-2 text-muted-foreground">{person.phone}</p>
+
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <Button asChild variant="default">
+                    <a href={`tel:${person.phone}`}>Call</a>
+                  </Button>
+
+                  <Button asChild variant="outline">
+                    <a
+                      href={contactWhatsappLink(
+                        person.phone,
+                        `Hello ${person.name}, I would like to contact MAAK Enterprises.`
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <Button asChild variant="outline">
+            <Link to="/about">Meet the full leadership team</Link>
+          </Button>
+        </div>
+      </section>
       <section className="bg-secondary py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="flex flex-wrap items-end justify-between gap-4">
