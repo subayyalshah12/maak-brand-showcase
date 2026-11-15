@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import hero from "@/assets/education.jpg";
 import { PageHero, SectionHeading } from "@/components/site/PageHero";
 import { InquiryForm } from "@/components/site/InquiryForm";
-import { WhatsAppButton } from "@/components/site/Cards";
-import { whatsappLink } from "@/lib/site";
+import { Button } from "@/components/ui/button";
+import { SITE, contactWhatsappLink } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/education")({
