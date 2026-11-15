@@ -1,4 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
+import type { Property } from "@/lib/sample-data";
 import { ArrowRight, Building2, GraduationCap, HardHat } from "lucide-react";
 import hero from "@/assets/hero-building.jpg";
 import construction from "@/assets/construction.jpg";
