@@ -12,7 +12,18 @@ export const Route = createFileRoute("/construction")({
   component: Construction,
 });
 
-const services = ["Residential construction", "Commercial construction", "Grey structure", "Finishing works", "Renovation", "Project management"];
+const services = [
+  "Residential Construction",
+  "Commercial Construction",
+  "Grey Structure",
+  "Finishing Works",
+  "Renovation",
+  "Project Management",
+  "Design Work",
+  "Project Consultancy",
+  "Project Construction and Supervision",
+  "Project Survey",
+];
 
 function Construction() {
   return (
