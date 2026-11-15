@@ -11,6 +11,7 @@ import { companySettingsQuery } from "@/hooks/use-company-settings";
 import { isAdminRole, validateImage, validPhone } from "@/lib/admin-rules";
 import { ListingImage } from "@/components/site/ListingImage";
 import { seo } from "@/lib/seo";
+import { PropertyManager } from "@/components/admin/PropertyManager";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({ ...seo("Administration", "Manage MAAK Enterprises inquiries, contact settings, and listing images.", "/admin"), meta: [...seo("Administration", "Manage MAAK Enterprises inquiries, contact settings, and listing images.", "/admin").meta, { name: "robots", content: "noindex,nofollow" }] }),
@@ -34,7 +35,7 @@ function Admin() {
     </div>
     <div role="tabpanel">
       {tab === "inquiries" && <Inquiries />}
-      {tab === "properties" && <Images kind="property" />}
+      {tab === "properties" && <PropertyManager />}
       {tab === "projects" && <Images kind="project" />}
       {tab === "settings" && <Settings />}
       {tab === "profile" && <Profile />}
