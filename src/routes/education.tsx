@@ -59,6 +59,32 @@ function Education() {
                   </div>
                 </div>
               ))}
+              <div className="rounded-lg border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+              <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+                Post Project Director
+              </p>
+              <h3 className="mt-2 text-xl font-semibold text-primary">
+                Sohail Ikram
+              </h3>
+              <p className="mt-2 text-muted-foreground">03369099797</p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Button asChild>
+                  <a href="tel:03369099797">Call</a>
+                </Button>
+                <Button asChild variant="outline">
+                  <a
+                    href={contactWhatsappLink(
+                      "03369099797",
+                      "Hello, I would like guidance on admissions with MAAK Enterprises."
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    WhatsApp
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
         <InquiryForm type="education" title="Request admissions guidance" />
