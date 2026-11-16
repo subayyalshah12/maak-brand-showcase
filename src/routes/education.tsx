@@ -18,8 +18,11 @@ function Education() {
         <div>
 <p className="mt-6 text-muted-foreground">Our consultancy team helps students and families understand the admissions process for MBBS, BDS, BS Nursing, Pharm-D, DPT, BS Allied Sciences, CNW and LHV programmes in Pakistan. Send us your questions and we will guide you on next steps.</p>                    <div className="mt-8 grid gap-5">
             {SITE.contacts
-              .filter((person) => person.division === "Educational Consultancy")
-              .map((person) => (
+.filter(
+  (person) =>
+    person.division === "Educational Consultancy" &&
+    person.person === "Uzair Ali Kazmi"
+)              .map((person) => (
                 <div
                   key={person.person}
                   className="rounded-lg border border-border bg-card p-6 shadow-[var(--shadow-card)]"
