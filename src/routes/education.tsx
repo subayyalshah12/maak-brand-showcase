@@ -7,8 +7,7 @@ import { SITE, contactWhatsappLink } from "@/lib/site";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/education")({
-  head: () => seo("Medical College Admissions Consultancy", "MBBS and BDS admissions consultancy for Pakistani medical colleges, from MAAK Enterprises in Gulberg Greens, Islamabad.", "/education"),
-  component: Education,
+head: () => seo("Medical Admissions & Healthcare Courses Consultancy", "Guidance for MBBS, BDS, BS Nursing, Pharm-D, DPT, BS Allied Sciences, CNW and LHV admissions in Pakistan.", "/education"),  component: Education,
 });
 
 function Education() {
