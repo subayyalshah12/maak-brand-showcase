@@ -14,13 +14,10 @@ export const Route = createFileRoute("/education")({
 function Education() {
   return (
     <>
-      <PageHero eyebrow="Educational consultancy" title="Guidance for medical college admissions in Pakistan" intro="Consultancy for students applying to MBBS and BDS programmes. Contact: Shahzaib, Gulberg Greens, Islamabad." image={hero} />
-      <section className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
+<PageHero eyebrow="Educational consultancy" title="Guidance for medical college admissions in Pakistan" intro="Professional guidance for students applying to medical, dental, nursing and allied health science programmes across Pakistan." image={hero} />      <section className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
         <div>
-          <SectionHeading eyebrow="How we help" title="MBBS & BDS admissions" />
-          <p className="mt-6 text-muted-foreground">Our consultancy team helps students and families understand the admissions process for medical and dental colleges in Pakistan. Send us your questions and we will guide you on next steps.</p>
-          <p className="mt-4 rounded-lg border border-border bg-gold-soft p-4 text-sm text-foreground">We provide guidance only. Admission decisions are made by the colleges and admitting authorities — we do not guarantee admission.</p>
-                    <div className="mt-8 grid gap-5">
+<SectionHeading eyebrow="How we help" title="Admissions across healthcare programmes" />          <p className="mt-6 text-muted-foreground">Our consultancy team helps students and families understand the admissions process for medical and dental colleges in Pakistan. Send us your questions and we will guide you on next steps.</p>
+<p className="mt-6 text-muted-foreground">Our consultancy team helps students and families understand the admissions process for MBBS, BDS, BS Nursing, Pharm-D, DPT, BS Allied Sciences, CNW and LHV programmes in Pakistan. Send us your questions and we will guide you on next steps.</p>                    <div className="mt-8 grid gap-5">
             {SITE.contacts
               .filter((person) => person.division === "Educational Consultancy")
               .map((person) => (
