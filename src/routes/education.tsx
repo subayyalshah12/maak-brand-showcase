@@ -15,8 +15,27 @@ function Education() {
     <>
 <PageHero eyebrow="Educational consultancy" title="Guidance for medical college admissions in Pakistan" intro="Professional guidance for students applying to medical, dental, nursing and allied health science programmes across Pakistan." image={hero} />      <section className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
         <div>
-<p className="mt-6 text-muted-foreground">Our consultancy team helps students and families understand the admissions process for MBBS, BDS, BS Nursing, Pharm-D, DPT, BS Allied Sciences, CNW and LHV programmes in Pakistan. Send us your questions and we will guide you on next steps.</p>                    <div className="mt-8 grid gap-5">
-            {SITE.contacts
+<p className="mt-6 text-muted-foreground">Our consultancy team helps students and families understand the admissions process for MBBS, BDS, BS Nursing, Pharm-D, DPT, BS Allied Sciences, CNW and LHV programmes in Pakistan. Send us your questions and we will guide you on next steps.</p>                   <div className="mt-8 grid gap-5">
+  <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+  {[
+    "MBBS",
+    "BDS",
+    "BS Nursing",
+    "Pharm-D",
+    "DPT",
+    "BS Allied Sciences",
+    "CNW",
+    "LHV",
+  ].map((course) => (
+    <div
+      key={course}
+      className="rounded-lg border border-border bg-card p-4 text-center font-semibold text-primary shadow-sm"
+    >
+      {course}
+    </div>
+  ))}
+</div>          
+  {SITE.contacts
 .filter(
   (person) =>
     person.division === "Educational Consultancy" &&
