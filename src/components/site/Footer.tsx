@@ -33,9 +33,6 @@ export function Footer() {
           <h3 className="text-lg text-gold">Contact</h3>
           <a href={`mailto:${SITE.email}`} className="mt-3 flex items-center gap-2 text-sm text-primary-foreground/80 hover:text-gold"><Mail className="size-4 text-gold" />{SITE.email}</a>
           <CompanyContact />
-          <ul className="mt-3 space-y-1 text-sm text-primary-foreground/70">
-            {SITE.contacts.map((c) => <li key={c.division}>{c.division}: {c.person}</li>)}
-          </ul>
         </div>
       </div>
       <div className="border-t border-primary-foreground/10">
