@@ -1,4 +1,6 @@
 import house from "@/assets/realestate.jpg";
+import residentialOverview from "@/assets/house image 1.jpeg";
+import residentialProgress from "@/assets/house 2.jpeg";
 import building from "@/assets/hero-building.jpg";
 import site from "@/assets/construction.jpg";
 
@@ -10,8 +12,20 @@ export type Property = {
   bedrooms: number; bathrooms: number; description: string; image: string; featured: boolean;
 };
 export type Project = {
-  id: string; title: string; location: string; category: string;
-  status: "Completed" | "Ongoing"; description: string; image: string; featured: boolean;
+  id: string;
+  title: string;
+  location: string;
+  category: string;
+  status: "Completed" | "Ongoing";
+  description: string;
+  image: string;
+  featured: boolean;
+  floors?: string;
+  designStyle?: string;
+  groundFloorArea?: string;
+  mumtyArea?: string;
+  currentStage?: string;
+  progressImage?: string;
 };
 
 export const properties: Property[] = [
@@ -22,7 +36,21 @@ export const properties: Property[] = [
 ];
 
 export const projects: Project[] = [
-  { id: "sample-residential-block", title: "[Sample] Residential Block", location: "Rawalpindi", category: "Residential", status: "Ongoing", description: "Sample project used for layout testing. Multi-storey RCC structure with full grey-structure and finishing scope.", image: site, featured: true },
-  { id: "sample-villa", title: "[Sample] Family Villa", location: "Islamabad", category: "Residential", status: "Completed", description: "Sample project used for layout testing. Turnkey construction of a contemporary family home.", image: house, featured: true },
-  { id: "sample-commercial", title: "[Sample] Commercial Plaza", location: "Islamabad", category: "Commercial", status: "Ongoing", description: "Sample project used for layout testing. Commercial plaza with glass façade.", image: building, featured: false },
+  {
+    id: "residential-construction-project",
+    title: "Residential Construction Project",
+    location: "Location available on request",
+    category: "Residential",
+    status: "Ongoing",
+    description:
+      "A modern luxury residential house project, covering architectural design and initial construction work, including site preparation, foundation and brickwork.",
+    image: residentialOverview,
+    featured: true,
+    floors: "Ground + 1",
+    designStyle: "Modern Luxury",
+    groundFloorArea: "2,120 sq. ft.",
+    mumtyArea: "470 sq. ft.",
+    currentStage: "Foundation and brickwork progress",
+    progressImage: residentialProgress,
+  },
 ];
