@@ -3,6 +3,9 @@ import residentialOverview from "@/assets/house image 1.jpeg";
 import residentialProgress from "@/assets/house 2.jpeg";
 import building from "@/assets/hero-building.jpg";
 import site from "@/assets/construction.jpg";
+import plasterProject from "@/assets/WhatsApp Image 2026-11-21 at 6.06.13 PM.jpeg";
+import foundationProject from "@/assets/WhatsApp Image 2026-11-21 at 6.06.14 PM.jpeg";
+import brickworkProject from "@/assets/WhatsApp Image 2026-11-21 at 6.06.20 PM.jpeg";
 
 // SAMPLE DATA — for development only. Not real listings or completed projects.
 // Will be replaced by records managed in the admin dashboard.
@@ -52,5 +55,41 @@ export const projects: Project[] = [
     mumtyArea: "470 sq. ft.",
     currentStage: "Foundation and brickwork progress",
     progressImage: residentialProgress,
+  },
+  {
+    id: "residential-plaster-work-project",
+    title: "Residential Plaster Work Project",
+    location: "Location not provided",
+    category: "Residential",
+    status: "Ongoing",
+    description:
+      "Residential construction project showcasing plaster work at the initial stage, including counter, staircase, wall, niche, arch and column-base areas, alongside a 3D design view.",
+    image: plasterProject,
+    featured: false,
+    currentStage: "Plaster work – initial stage",
+  },
+  {
+    id: "residential-foundation-brickwork-project",
+    title: "Residential Foundation & Brickwork Project",
+    location: "Location not provided",
+    category: "Residential",
+    status: "Ongoing",
+    description:
+      "Residential construction project showing site preparation, foundation work, wall construction and room structure at the initial stage.",
+    image: foundationProject,
+    featured: false,
+    currentStage: "Foundation and brickwork – initial stage",
+  },
+  {
+    id: "residential-brickwork-stage-project",
+    title: "Residential House – Brickwork Stage",
+    location: "Location not provided",
+    category: "Residential",
+    status: "Ongoing",
+    description:
+      "Residential house construction project with foundation completed and brickwork in progress. The overview also presents structural and interior design concepts.",
+    image: brickworkProject,
+    featured: false,
+    currentStage: "Foundation completed; brickwork in progress",
   },
 ];
