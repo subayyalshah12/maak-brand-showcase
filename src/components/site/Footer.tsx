@@ -42,6 +42,7 @@ export function Footer() {
     </a>
   </span>
 </li>
+                  ))}
           </ul>
         </div>
         <div>
