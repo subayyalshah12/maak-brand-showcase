@@ -27,9 +27,9 @@ function ProjectsLayout() {
 
 function Projects() {
   const [status, setStatus] = useState<"All" | "Completed" | "Ongoing">("All");
-  const list = projects.filter(
-    (p) => status === "All" || p.status === status
-  );
+ const list = projects.filter(
+  (p) => !p.featured && (status === "All" || p.status === status)
+);
   const featured = projects.find((p) => p.featured);
 
   return (
