@@ -1,6 +1,6 @@
-
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { projects } from "@/lib/sample-data";
+import { ArrowLeft, MapPin, Building2, Layers, Ruler, Palette } from "lucide-react";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { seo } from "@/lib/seo";
 
