@@ -25,8 +25,23 @@ export function Footer() {
           <h3 className="text-lg text-gold">Offices</h3>
           <ul className="mt-3 space-y-3 text-sm text-primary-foreground/80">
             {SITE.offices.map((o) => (
-              <li key={o.city} className="flex gap-2"><MapPin className="mt-0.5 size-4 shrink-0 text-gold" /><span>{o.city}<br /><span className="text-primary-foreground/60">{o.focus}</span></span></li>
-            ))}
+             <li key={o.city} className="flex gap-2">
+  <MapPin className="mt-0.5 size-4 shrink-0 text-gold" />
+  <span>
+    {o.city}
+    <br />
+    <span className="text-primary-foreground/60">{o.focus}</span>
+    <br />
+    <a
+      href={o.mapUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-1 inline-block text-gold hover:underline"
+    >
+      View on Google Maps
+    </a>
+  </span>
+</li>
           </ul>
         </div>
         <div>
