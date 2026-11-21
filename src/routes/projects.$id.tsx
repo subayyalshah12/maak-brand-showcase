@@ -1,6 +1,5 @@
 
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, MapPin, Building2, Layers, Ruler, Palette, HardHat } from "lucide-react";
 import { projects } from "@/lib/sample-data";
 import { InquiryForm } from "@/components/site/InquiryForm";
 import { seo } from "@/lib/seo";
@@ -113,29 +112,6 @@ function ProjectDetail() {
               })}
             </div>
           </section>
-
-          {p.progressImage && (
-            <section className="mt-12">
-              <div className="flex items-center gap-2">
-                <HardHat className="size-6 text-primary" />
-                <h2 className="text-2xl font-semibold text-primary">
-                  Construction Progress
-                </h2>
-              </div>
-
-              <p className="mt-2 text-muted-foreground">
-                {p.currentStage}
-              </p>
-
-              <div className="mt-5 overflow-hidden rounded-xl border bg-card">
-                <img
-                  src={p.progressImage}
-                  alt={`${p.title} - Construction progress`}
-                  className="w-full object-contain"
-                />
-              </div>
-            </section>
-          )}
         </div>
 
         <aside>
