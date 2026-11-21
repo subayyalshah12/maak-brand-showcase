@@ -35,48 +35,51 @@ function Education() {
     </div>
   ))}
 </div>          
-  {SITE.contacts
-.filter(
-  (person) =>
-    person.division === "Educational Consultancy" &&
-    person.person === "Uzair Ali Kazmi"
-)              .map((person) => (
-                <div
-                  key={person.person}
-                  className="rounded-lg border border-border bg-card p-6 shadow-[var(--shadow-card)]"
-                >
-                  <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                    {person.person === "Uzair Ali Kazmi"
-                      ? "Chief Executive Officer (CEO)"
-                      : "Project Director"}
-                  </p>
 
-                  <h3 className="mt-2 text-xl font-semibold text-primary">
-                    {person.person}
-                  </h3>
+{SITE.contacts
+  .filter(
+    (person) => person.division === "Educational Consultancy"
+  )
+  .map((person) => (
+    <div
+      key={person.person}
+      className="rounded-lg border border-border bg-card p-6 shadow-[var(--shadow-card)]"
+    >
+      <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+        {person.person === "Uzair Ali Kazmi"
+          ? "Chief Executive Officer (CEO)"
+          : person.person === "Shahzaib Anjum"
+            ? "Project Director"
+            : "Post Project Director"}
+      </p>
 
-                  <p className="mt-2 text-muted-foreground">{person.phone}</p>
+      <h3 className="mt-2 text-xl font-semibold text-primary">
+        {person.person}
+      </h3>
 
-                  <div className="mt-4 flex flex-wrap gap-3">
-                    <Button asChild>
-                      <a href={`tel:${person.phone}`}>Call</a>
-                    </Button>
+      <p className="mt-2 text-muted-foreground">{person.phone}</p>
 
-                    <Button asChild variant="outline">
-                      <a
-                        href={contactWhatsappLink(
-                          person.phone,
-                          "Hello, I would like guidance on MBBS/BDS admissions with MAAK Enterprises."
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        WhatsApp
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              ))}
+      <div className="mt-4 flex flex-wrap gap-3">
+        <Button asChild>
+          <a href={`tel:${person.phone}`}>Call</a>
+        </Button>
+
+        <Button asChild variant="outline">
+          <a
+            href={contactWhatsappLink(
+              person.phone,
+              "Hello, I would like guidance on admissions with MAAK Enterprises."
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp
+          </a>
+        </Button>
+      </div>
+    </div>
+  ))}
+
               <div className="rounded-lg border border-border bg-card p-6 shadow-[var(--shadow-card)]">
               <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                 Post Project Director
