@@ -24,8 +24,20 @@ function Contact() {
         <CompanyContact />
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
           {SITE.offices.map((o) => (
-            <div key={o.city} className="rounded-lg border border-border bg-card p-5"><MapPin className="size-5 text-gold" /><p className="mt-2 font-semibold">{o.city}</p><p className="text-sm text-muted-foreground">{o.focus}</p></div>
-          ))}
+  <div key={o.city} className="rounded-lg border border-border bg-card p-5">
+    <MapPin className="size-5 text-gold" />
+    <p className="mt-2 font-semibold">{o.city}</p>
+    <p className="text-sm text-muted-foreground">{o.focus}</p>
+    <a
+      href={o.mapUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
+    >
+      View on Google Maps
+    </a>
+  </div>
+))}
         </div>
                 <div className="mt-10">
           <SectionHeading
