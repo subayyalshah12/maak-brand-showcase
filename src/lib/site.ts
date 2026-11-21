@@ -61,6 +61,11 @@ export const SITE = {
       person: "Shahzaib Anjum",
       phone: "03189862182",
     },
+    {
+  division: "Educational Consultancy",
+  person: "Sohail Ikram",
+  phone: "03369099797",
+},
   ],
 };
 
