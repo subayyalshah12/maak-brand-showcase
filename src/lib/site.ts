@@ -4,9 +4,17 @@ export const SITE = {
   email: "maakentps@gmail.com",
   whatsapp: "" as string,
 
-  offices: [
-    { city: "Rawalpindi, Pakistan", focus: "Construction operations" },
-    { city: "Gulberg Greens, Islamabad, Pakistan", focus: "Real Estate & Educational Consultancy" },
+    offices: [
+    {
+      city: "Rawalpindi, Pakistan",
+      focus: "Construction Office",
+      mapUrl: "https://maps.app.goo.gl/r37FXP4zvWtP8hcu6",
+    },
+    {
+      city: "Gulberg Greens, Islamabad, Pakistan",
+      focus: "Real Estate & Educational Consultancy Office",
+      mapUrl: "https://maps.app.goo.gl/DeBdifRBWnsWMkoo6",
+    },
   ],
 
   leadership: [
