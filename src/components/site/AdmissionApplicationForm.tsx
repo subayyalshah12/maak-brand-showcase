@@ -77,13 +77,14 @@ export function AdmissionApplicationForm() {
     }
 
     const program = String(data.get("program_applied"));
+    const documentsChecklist = data.getAll("documents_checklist").map(String);
 
     if (!programs.includes(program as (typeof programs)[number])) {
       setError("Please select a valid program.");
       return;
     }
 
-    setSending(true);
+    setSending(truedocuments_checklist: documentsChecklist as unknown as Json,
 
     try {
       const { error: insertError } = await supabase
@@ -100,6 +101,7 @@ export function AdmissionApplicationForm() {
           gender: String(data.get("gender")),
           marital_status: String(data.get("marital_status")),
           academic_qualifications: qualifications as unknown as Json,
+          documents_checklist: documentsChecklist as unknown as Json,
           program_applied: program,
           applicant_signature: String(data.get("applicant_signature")).trim(),
           application_date: String(data.get("application_date")),
