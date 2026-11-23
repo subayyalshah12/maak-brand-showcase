@@ -1,5 +1,4 @@
-
-
+import { useEffect, useState } from "react";
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -9,7 +8,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-const programs = ["Generic BS Nursing", "Post RN BSN", "Diploma"] as const;
+const programs = [
+  "MBBS",
+  "BDS",
+  "BS Nursing",
+  "Pharm-D",
+  "DPT",
+  "BS Allied Sciences",
+  "CNW",
+  "LHV",
+] as const;
 
 type AcademicRow = {
   exam: string;
@@ -27,14 +35,24 @@ const emptyRow: AcademicRow = {
   total: "",
 };
 
-export function AdmissionApplicationForm() {
+export function AdmissionApplicationForm({
+  initialProgram = "",
+}: {
+  initialProgram?: string;
+}) {
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [selectedProgram, setSelectedProgram] = useState(initialProgram);
+
+useEffect(() => {
+  setSelectedProgram(initialProgram);
+}, [initialProgram]);
   const [academic, setAcademic] = useState<AcademicRow[]>([
     { ...emptyRow },
     { ...emptyRow },
     { ...emptyRow },
+    
   ]);
 
   function updateAcademic(index: number, field: keyof AcademicRow, value: string) {
