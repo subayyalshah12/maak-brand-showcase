@@ -29,6 +29,7 @@ export type Database = {
           gender: string
           marital_status: string
           academic_qualifications: Json
+          documents_checklist: Json
           program_applied: string
           applicant_signature: string
           application_date: string
@@ -48,6 +49,7 @@ export type Database = {
           gender: string
           marital_status: string
           academic_qualifications?: Json
+          documents_checklist?: Json
           program_applied: string
           applicant_signature: string
           application_date: string
@@ -67,6 +69,7 @@ export type Database = {
           gender?: string
           marital_status?: string
           academic_qualifications?: Json
+          documents_checklist?: Json
           program_applied?: string
           applicant_signature?: string
           application_date?: string
