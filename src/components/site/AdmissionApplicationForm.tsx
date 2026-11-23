@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -83,8 +84,7 @@ export function AdmissionApplicationForm() {
       setError("Please select a valid program.");
       return;
     }
-
-    setSending(truedocuments_checklist: documentsChecklist as unknown as Json,
+    setSending(true);
 
     try {
       const { error: insertError } = await supabase
