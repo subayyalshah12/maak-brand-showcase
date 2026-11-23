@@ -19,6 +19,8 @@ head: () => seo("Medical Admissions & Healthcare Courses Consultancy", "Guidance
 });
 
 function Education() {
+  const [applicationOpen, setApplicationOpen] = useState(false);
+const [selectedCourse, setSelectedCourse] = useState("");
   return (
     <>
 <PageHero eyebrow="Educational consultancy" title="Guidance for medical college admissions in Pakistan" intro="Professional guidance for students applying to medical, dental, nursing and allied health science programmes across Pakistan." image={hero} />      <section className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2">
@@ -48,8 +50,7 @@ function Education() {
 </button>
   ))}
 </div>          
-const [applicationOpen, setApplicationOpen] = useState(false);
-const [selectedCourse, setSelectedCourse] = useState("");
+
 {SITE.contacts
   .filter(
     (person) => person.division === "Educational Consultancy"
