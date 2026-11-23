@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import type { Json } from "@/integrations/supabase/types";
@@ -267,7 +266,14 @@ useEffect(() => {
           <div className="grid gap-3 sm:grid-cols-3">
             {programs.map((program) => (
               <label key={program} className="flex items-center gap-2 rounded-lg border border-blue-200 p-3 font-medium">
-                <input type="radio" name="program_applied" value={program} required />
+                <input
+  type="radio"
+  name="program_applied"
+  value={program}
+  checked={selectedProgram === program}
+  onChange={() => setSelectedProgram(program)}
+  required
+/>
                 {program}
               </label>
             ))}
