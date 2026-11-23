@@ -14,6 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
+      
+      admission_applications: {
+        Row: {
+          id: string
+          session_year: string
+          applicant_name: string
+          father_name: string
+          date_of_birth: string
+          cnic_bform: string
+          phone: string
+          email: string | null
+          address: string
+          gender: string
+          marital_status: string
+          academic_qualifications: Json
+          program_applied: string
+          applicant_signature: string
+          application_date: string
+          status: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          session_year: string
+          applicant_name: string
+          father_name: string
+          date_of_birth: string
+          cnic_bform: string
+          phone: string
+          email?: string | null
+          address: string
+          gender: string
+          marital_status: string
+          academic_qualifications?: Json
+          program_applied: string
+          applicant_signature: string
+          application_date: string
+          status?: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          session_year?: string
+          applicant_name?: string
+          father_name?: string
+          date_of_birth?: string
+          cnic_bform?: string
+          phone?: string
+          email?: string | null
+          address?: string
+          gender?: string
+          marital_status?: string
+          academic_qualifications?: Json
+          program_applied?: string
+          applicant_signature?: string
+          application_date?: string
+          status?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+
       properties: {
         Row: {
           id: string
