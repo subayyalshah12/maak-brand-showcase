@@ -5,6 +5,14 @@ import { InquiryForm } from "@/components/site/InquiryForm";
 import { Button } from "@/components/ui/button";
 import { SITE, contactWhatsappLink } from "@/lib/site";
 import { seo } from "@/lib/seo";
+import { useState } from "react";
+import { AdmissionApplicationForm } from "@/components/site/AdmissionApplicationForm";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 export const Route = createFileRoute("/education")({
 head: () => seo("Medical Admissions & Healthcare Courses Consultancy", "Guidance for MBBS, BDS, BS Nursing, Pharm-D, DPT, BS Allied Sciences, CNW and LHV admissions in Pakistan.", "/education"),  component: Education,
@@ -27,15 +35,21 @@ function Education() {
     "CNW",
     "LHV",
   ].map((course) => (
-    <div
-      key={course}
-      className="rounded-lg border border-border bg-card p-4 text-center font-semibold text-primary shadow-sm"
-    >
-      {course}
-    </div>
+    <button
+  key={course}
+  type="button"
+  onClick={() => {
+    setSelectedCourse(course);
+    setApplicationOpen(true);
+  }}
+  className="cursor-pointer rounded-lg border border-border bg-card p-4 text-center font-semibold text-primary shadow-sm transition hover:border-primary hover:bg-primary/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+>
+  {course}
+</button>
   ))}
 </div>          
-
+const [applicationOpen, setApplicationOpen] = useState(false);
+const [selectedCourse, setSelectedCourse] = useState("");
 {SITE.contacts
   .filter(
     (person) => person.division === "Educational Consultancy"
@@ -82,6 +96,15 @@ function Education() {
 
             
         <InquiryForm type="education" title="Request admissions guidance" />
+       <Dialog open={applicationOpen} onOpenChange={setApplicationOpen}>
+  <DialogContent className="max-h-[90vh] max-w-4xl overflow-y-auto">
+    <DialogHeader>
+      <DialogTitle>Admission Application</DialogTitle>
+    </DialogHeader>
+
+    <AdmissionApplicationForm initialProgram={selectedCourse} />
+  </DialogContent>
+</Dialog>
       </section>
     </>
   );
