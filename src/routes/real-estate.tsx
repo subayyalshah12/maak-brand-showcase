@@ -59,10 +59,7 @@ function RealEstate() {
     },
   });
 
-  const displayProperties =
-    publishedProperties.data && publishedProperties.data.length > 0
-      ? publishedProperties.data
-      : sampleProperties;
+  const displayProperties = publishedProperties.data ?? [];
 
   const list = useMemo(
     () => filterProperties(displayProperties, { q, purpose, type, beds }),
