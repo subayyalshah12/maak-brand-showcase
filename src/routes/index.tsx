@@ -10,7 +10,7 @@ import education from "@/assets/education.jpg";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/site/PageHero";
 import { PropertyCard, ProjectCard } from "@/components/site/Cards";
-import { properties, projects } from "@/lib/sample-data";
+import { projects } from "@/lib/sample-data";
 import { Logo } from "@/components/site/Logo";
 import { seo } from "@/lib/seo";
 import { SITE, contactWhatsappLink } from "@/lib/site";
