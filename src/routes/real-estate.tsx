@@ -87,7 +87,7 @@ function RealEstate() {
           </select>
           <Button variant="outline" className="h-10" onClick={reset}>Reset</Button>
         </div>
-        <p className="mt-6 text-sm text-muted-foreground">{list.length} {list.length === 1 ? "property" : "properties"} · Listings marked [Sample] are placeholders.</p>
+        <p className="mt-6 text-sm text-muted-foreground">{list.length} {list.length === 1 ? "property" : "properties"} </p>
         {list.length ? (
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{list.map((p) => <PropertyCard key={p.id} p={p} />)}</div>
         ) : (
