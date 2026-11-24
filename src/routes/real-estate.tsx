@@ -8,7 +8,6 @@ import { PageHero } from "@/components/site/PageHero";
 import { PropertyCard } from "@/components/site/Cards";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { properties as sampleProperties } from "@/lib/sample-data";
 import type { Property } from "@/lib/sample-data";
 import { seo } from "@/lib/seo";
 import { filterProperties } from "@/lib/property-search";
