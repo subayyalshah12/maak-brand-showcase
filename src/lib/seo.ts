@@ -1,6 +1,6 @@
 export function seo(title: string, description: string, path: string, type = "website") {
   const full = `${title} | MAAK Enterprises`;
-  const url = new URL(path, "https://maak-brand-showcase.lovable.app").href;
+  const url = new URL(path, "https://maakenterprises.co").href;
   return {
     meta: [
       { title: full },
