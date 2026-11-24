@@ -56,10 +56,7 @@ function Home() {
     },
   });
 
-  const featuredProperties =
-    featuredQuery.data && featuredQuery.data.length > 0
-      ? featuredQuery.data
-      : properties.filter((p) => p.featured);
+ const featuredProperties = featuredQuery.data ?? [];
   return (
     <>
       <section className="relative isolate overflow-hidden bg-navy-deep">
